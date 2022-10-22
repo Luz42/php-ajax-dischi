@@ -14,7 +14,9 @@
         </div>
     </div>
     <?php
-    include 'database.php';
+            // _DIR_ utilizzato per rendere i percorsi
+            // relativi al file di utilizzo
+    include __DIR__ . '/database.php';
     //var_dump($database)
 
 
