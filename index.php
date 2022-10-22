@@ -13,13 +13,14 @@
        // _DIR_ utilizzato per rendere i percorsi
        // relativi al file di utilizzo
 include __DIR__ . '/database.php';
+$filter = '';
     //ISSET verifica la presenza di un valore
     if(isset($_GET['filter'])){
         $filter = strtolower($_GET['filter']);
         $data = [];
         foreach($database as $album){
             //con un ciclo viene verificato il valore ed inseriti i risultati nell'array
-            if (strtolower($album['genre']) == $filter){
+            if (strlen($filter) === 0 || strtolower($album['genre']) == $filter){
                 $data[] = $album;
             }
         }
