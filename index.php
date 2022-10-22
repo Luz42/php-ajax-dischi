@@ -8,5 +8,10 @@
 </head>
 <body>
     
+    <?php
+    include 'database.php';
+    var_dump($database)
+    ?>
+
 </body>
 </html>
