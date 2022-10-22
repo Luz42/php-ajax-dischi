@@ -8,14 +8,40 @@
     <title>PHP DISCHI</title>
 </head>
 <body>
+
+<?php
+       // _DIR_ utilizzato per rendere i percorsi
+       // relativi al file di utilizzo
+include __DIR__ . '/database.php';
+    //ISSET verifica la presenza di un valore
+    if(isset($_GET['filter'])){
+        $filter = strtolower($_GET['filter']);
+        $data = [];
+        foreach($database as $album){
+            //con un ciclo viene verificato il valore ed inseriti i risultati nell'array
+            if (strtolower($album['genre']) == $filter){
+                $data[] = $album;
+            }
+        }
+        $database = $data;
+    }
+
+?>
+
+<header class="p-2">
+        <!-- ACTION indica dove inviare i dati -->
+    <form action="./index.php" method="get">
+        <input type="text" name="filter">
+        <input type="submit" value="Cerca">
+    </form>
+</header>
+
+<main>
     <div class="container-fluid">
         <div class="row gap-3 justify-content-center p-5">
             
     
     <?php
-            // _DIR_ utilizzato per rendere i percorsi
-            // relativi al file di utilizzo
-    include __DIR__ . '/database.php';
     //var_dump($database);
 
     foreach($database as $album){
@@ -35,6 +61,6 @@
     </div>
     </div>
 
-
+</main>
 </body>
 </html>
