@@ -9,18 +9,32 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row gap-3 justify-content-center p-5">
             
-        </div>
-    </div>
+    
     <?php
             // _DIR_ utilizzato per rendere i percorsi
             // relativi al file di utilizzo
     include __DIR__ . '/database.php';
-    //var_dump($database)
+    //var_dump($database);
 
+    foreach($database as $album){
+?>
+        <div class="col-3 bg-dark text-white text-center">
+            <div class="d-flex justify-content-center p-3">
+                <img class="img-fluid" src="<?= $album['poster'] ?>" alt="<?= $album['title'] ?>">
+            </div>    
+            <h2><?= $album['title'] ?></h2>
+            <p><?= $album['year'] ?></p>
+            <p><?= $album['author'] ?></p>
+        </div>
+        <?php
+    }
 
-    ?>
+    ?>    
+    </div>
+    </div>
+
 
 </body>
 </html>
